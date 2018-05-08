@@ -1,27 +1,61 @@
 
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
+  <div class="container">
+    <div class="container">
+<table class="table bordered">
+  <tr>
+    <td></td>
+    <th>FirstName</th>
+    <th>lastName</th>
+    <th>Document Type</th>
+    <th>Document Number</th>
+    <th>Genre</th>
+    <th>Creacion</th>
+    <th>Modificacion</th>
+
+  </tr>
+  <tr *ngFor="let user of users" >
+      <td>
+        <a title="Editar Pet" routerLink="/detail/{{user._id}}"><span class="glyphicon glyphicon-pencil"></span></a>
+        <a title="Eliminar Pet"   (click)="delete(user)" class="trash"><span class="glyphicon glyphicon-trash"></span></a>
+      </td>
+      <td>{{user.firstName}}</td>
+      <td>{{user.lastName}}</td>
+      <td>{{user.documentType}}</td>
+      <td>{{user.documentNumber}}</td>
+      <td>{{user.genre}}</td>
+      <td>{{user.fechaCreacion}}</td>
+      <td>{{user.fechaActualizacion}}</td>
+
+  </tr>
+</table>
+
+</div>
+</div>
+
+
 <div class='container'>
         <h4>&nbsp;&nbsp;&nbsp;Registro User</h4><br><br>
-    <form>
+    
         <div class="form-group row">
           <label for="fist_name" class="col-sm-2 col-form-label">Nombres</label>
           <div class="col-sm-10">
-            <input type="email" class="form-control" id="fist_name" placeholder="Nombres">
+            <input type="email" class="form-control" #userFirstName id="first_name" placeholder="Nombres">
           </div>
         </div>
     
         <div class="form-group row">
             <label for="last_name" class="col-sm-2 col-form-label">Apellidos</label>
             <div class="col-sm-10">
-              <input type="email" class="form-control" id="last_name" placeholder="Apellidos">
+              <input type="email" class="form-control" #userLastName id="last_name" placeholder="Apellidos">
             </div>
           </div>
     
           <div class="form-group row">
-            <label for="document_type" class="col-sm-2 col-form-label">Tipo Documento</label>
+            <label for="document_type"  class="col-sm-2 col-form-label">Tipo Documento</label>
             <div class="col-sm-10">
-            <select id="document_type" class="form-control">
+            <select #userdocumentType id="document_type" class="form-control">
               <option selected>Seleccione...</option>
               <option value="cedula">Cedula</option>
               <option value="pasaporte">Pasaporte</option>
@@ -30,22 +64,22 @@
           </div>
     
           <div class="form-group row">
-            <label for="document_number" class="col-sm-2 col-form-label">Numero Documento</label>
+            <label for="document_number"  class="col-sm-2 col-form-label">Numero Documento</label>
             <div class="col-sm-10">
-              <input type="email" class="form-control" id="document_number" placeholder="numero documento">
+              <input type="email" class="form-control" #userDocumentNumber id="document_number" placeholder="numero documento">
             </div>
           </div>
     
         <div class="form-group row">
             <label for="email" class="col-sm-2 col-form-label">Email</label>
             <div class="col-sm-10">
-              <input type="email" class="form-control" id="email" placeholder="Email">
+              <input type="email" #userEmail class="form-control" id="email" placeholder="Email">
             </div>
           </div>
         <div class="form-group row">
           <label for="password" class="col-sm-2 col-form-label">Password</label>
           <div class="col-sm-10">
-            <input type="password" class="form-control" id="password" placeholder="Password">
+            <input type="password" #userPassword class="form-control" id="password" placeholder="Password">
           </div>
         </div>
         <fieldset class="form-group">
@@ -71,8 +105,12 @@
        
         <div class="form-group row">
           <div class="col-sm-10">
-            <button type="submit" class="btn btn-primary">Enviar</button>
+            <!-- <button type="submit" class="btn btn-primary">Enviar</button> -->
+            <button class="btn btn-success" (click)="add(userFirstName.value,userLastName.value, 
+            userEmail.value,userPassword.value); ">Add</button>
+               
+
           </div>
         </div>
-      </form>
+      
       </div>

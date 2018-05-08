@@ -1,0 +1,10 @@
+
+<app-navbar></app-navbar>
+<div *ngIf="!user" class="logged-out">
+    You are not logged in.
+    
+  </div>
+  <div *ngIf="user" class="logged-in">
+    You are logged in.
+    {{user}}
+</div>
